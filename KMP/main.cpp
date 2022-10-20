@@ -3,9 +3,19 @@
 
 using namespace std;
 
+class Kmp
+{
+public:
+    const string& s;
+    const string& txt;
+    int lps[];
+
+};
+
+
+
 int main()
 {   
-    int maxL = -1;
     Lps test("");
     string s;
     while(true)  

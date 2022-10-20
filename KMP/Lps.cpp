@@ -1,11 +1,6 @@
 #include "Lps.hpp"
 using namespace std;
 
-/**
- *  Find the longest Proper Prefix that is also a suffix
- *  (Required by KMP algorithm)
-*/
-
 Lps::Lps(const string& s) : _s(s)
     {}
 
@@ -18,7 +13,7 @@ Lps::MaxLength()
 
         int maxL = 0;
         int size = 0;
-        while(size < _s.length())
+        while(size < (int)_s.length())
         {
             bool IsProper = IsProperWithSize(size);
             if(IsProper)
@@ -57,21 +52,3 @@ Lps:: IsProperWithSize(const int& sz)
 
     return res;
 }   
-
-
-
-// int main()
-// {   
-//     int maxL = -1;
-//     Lps test("");
-//     string s;
-//     while(true)  
-//     {
-//         cout << "enter: ";
-//         cin >> s;
-//         test.SetStr(s);
-//         cout << test.MaxLength() << endl;
-//     }  
-
-//     return 0;
-// }
