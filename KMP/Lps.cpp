@@ -5,23 +5,18 @@ Lps::Lps(const string& s) : _s(s)
     {}
 
     
-int
+vector<int>
 Lps::MaxLength()
     {
-        if(_s.empty())
-            return 0;
-
-        int maxL = 0;
+        vector<int> res;
         int size = 0;
         while(size < (int)_s.length())
         {
-            bool IsProper = IsProperWithSize(size);
-            if(IsProper)
-                maxL = max(size, maxL);
+            res.push_back(FindMax(size));
             ++size;
         }
 
-        return maxL;
+        return res;
     }
 
 void 
@@ -29,26 +24,32 @@ Lps::SetStr(const string& s) { _s = s; }
 
 Lps::Lps(){};
 
-bool 
-Lps:: IsProperWithSize(const int& sz)
+int 
+Lps:: FindMax(const int& sz)
 {
-    int l = 0;
-    int r = _s.length()-sz;
-    bool res = true;
-    while(l < sz)
+    int maxL=sz;
+    int l;
+    int r;
+    int n;
+    while(maxL > 0)
     {
-        if(_s[l] == _s[r])
+        l = 0;
+        r = sz-maxL + 1;    // start index of suffix
+        for(n=0; n<maxL; n++)
         {
-            ++ l;
-            ++ r;
-        } 
-        
-        else
-        {
-            res = false;
-            break;
+            if(_s[l] == _s[r])
+            {
+                ++ l; 
+                ++ r;
+            } else 
+                break;
         }
+
+        if(n == maxL)
+            break;
+        else
+            -- maxL;
     }
 
-    return res;
+    return maxL;
 }   

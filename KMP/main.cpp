@@ -23,7 +23,11 @@ int main()
         cout << "enter: ";
         cin >> s;
         test.SetStr(s);
-        cout << test.MaxLength() << endl;
+        for(auto i : test.MaxLength())
+        {
+            cout << i << " ";
+        }
+        cout << endl;
     }  
 
     return 0;
