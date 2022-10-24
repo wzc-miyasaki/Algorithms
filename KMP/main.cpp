@@ -8,7 +8,6 @@ class Kmp
 public:
     const string& s;
     const string& txt;
-    int lps[];
 
 };
 
